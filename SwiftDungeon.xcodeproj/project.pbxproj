@@ -10,7 +10,7 @@
 		432CF1A4205861AD0022D1DF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A3205861AD0022D1DF /* Entity.swift */; };
 		432CF1A6205861BE0022D1DF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A5205861BE0022D1DF /* Player.swift */; };
 		432CF1A8205875CD0022D1DF /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A7205875CD0022D1DF /* Joystick.swift */; };
-		43752C702087DC47001DDDA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43752C6F2087DC47001DDDA8 /* GoogleService-Info.plist */; };
+		4344624D2087E16E0068197C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4344624C2087E16E0068197C /* GoogleService-Info.plist */; };
 		439FEAAA2060378200F35A8B /* AttackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439FEAA92060378200F35A8B /* AttackButton.swift */; };
 		7F3426522056EDF80057A2EF /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3426512056EDF80057A2EF /* GameManager.swift */; };
 		7F3426542056EE130057A2EF /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3426532056EE130057A2EF /* Map.swift */; };
@@ -59,7 +59,7 @@
 		432CF1A3205861AD0022D1DF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		432CF1A5205861BE0022D1DF /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		432CF1A7205875CD0022D1DF /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
-		43752C6F2087DC47001DDDA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4344624C2087E16E0068197C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		439FEAA92060378200F35A8B /* AttackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackButton.swift; sourceTree = "<group>"; };
 		7F3426512056EDF80057A2EF /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		7F3426532056EE130057A2EF /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				7F91730720475AE80076533D /* LaunchScreen.storyboard */,
 				7F91730A20475AE80076533D /* Info.plist */,
 				7F3426512056EDF80057A2EF /* GameManager.swift */,
-				43752C6F2087DC47001DDDA8 /* GoogleService-Info.plist */,
+				4344624C2087E16E0068197C /* GoogleService-Info.plist */,
 				432CF1A3205861AD0022D1DF /* Entity.swift */,
 				7F3426532056EE130057A2EF /* Map.swift */,
 				432CF1A5205861BE0022D1DF /* Player.swift */,
@@ -319,7 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F91730420475AE80076533D /* Main.storyboard in Resources */,
-				43752C702087DC47001DDDA8 /* GoogleService-Info.plist in Resources */,
+				4344624D2087E16E0068197C /* GoogleService-Info.plist in Resources */,
 				7F91730620475AE80076533D /* Assets.xcassets in Resources */,
 				7F91730920475AE80076533D /* LaunchScreen.storyboard in Resources */,
 			);
