@@ -35,7 +35,8 @@ class GameScene: SKScene {
             gameManager?.joystick?.onBegin(loc: location)
             
             if (gameManager?.attackButton?.onClick(loc: location))! {
-                gameManager?.player.attack()
+                //gameManager?.player.attack()
+                gameManager?.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 1000))
             }
         }
     }

@@ -61,6 +61,7 @@ class Player : Entity {
         position.x -= velocity * direction.x * CGFloat(deltaTime)
         position.y += velocity * direction.y * CGFloat(deltaTime)
         
+        /*
         // Keep player within level bounds
         if(position.y < 600)
         {
@@ -78,6 +79,7 @@ class Player : Entity {
         {
             position.x = CGFloat((scene?.size.width)!)
         }
+        */
         
         //If it is animating, increment the animTimer until it has reached the total duration of the SKAction's animation time
         //Once the time has exceeded the duration, is is no longer animating

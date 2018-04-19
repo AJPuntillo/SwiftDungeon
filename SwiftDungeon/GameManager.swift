@@ -19,6 +19,7 @@ class GameManager {
     var enemies:[Enemy] = []
     private var maxEnemies = 3
     private let enemyFactory = EnemyFactory()
+    let platform = SKSpriteNode(imageNamed: "platform")
     
     // Loading check
     var loading: Bool = false
@@ -40,6 +41,22 @@ class GameManager {
         player.zPosition = 1
         player.position = map.playerSpawn
         player.setScale(5)
+        
+        //player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.texture!.size())
+        player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: player.size.width, height: player.size.height))
+        player.physicsBody?.usesPreciseCollisionDetection = true;
+        player.physicsBody?.isDynamic = true;
+        player.physicsBody?.affectedByGravity = true;
+        player.physicsBody?.allowsRotation = false;
+        
+        platform.zPosition = 2
+        platform.position = CGPoint(x: 300, y: 300)
+        
+        //platform.physicsBody = SKPhysicsBody(texture: platform.texture!, size: platform.texture!.size())
+        platform.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: platform.size.width, height: platform.size.height))
+        platform.physicsBody?.isDynamic = false;
+        
+        scene?.addChild(platform)
         
         //Init the Joystick
         joystick = Joystick()
