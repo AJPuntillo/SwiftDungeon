@@ -9,6 +9,12 @@
 import Foundation
 import SpriteKit
 
+enum PlayerState {
+    case IDLE
+    case ATTACKING
+    case JUMPING
+}
+
 class Player : Entity {
     
     //The direction the player will move towards to on input
@@ -19,8 +25,6 @@ class Player : Entity {
     private var textureAnimation: [SKTexture] = []
     //Check if already animating (Prevent spamming)
     var isAnimating:Bool = false
-    //Check if attacking
-    var isAttacking:Bool = false
     //Check if dead
     var isDead:Bool = false
     //SKAction for animation
@@ -29,10 +33,13 @@ class Player : Entity {
     var animTimer:Double = 0
     //Health
     var health:Int = 10
+    //State
+    var state = PlayerState.IDLE
     
     init() {
         super.init(imageName: "rogue_idle_01")
         idle()
+        state = PlayerState.IDLE
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +66,19 @@ class Player : Entity {
         }
         
         position.x -= velocity * direction.x * CGFloat(deltaTime)
-        position.y += velocity * direction.y * CGFloat(deltaTime)
+        //position.y += velocity * direction.y * CGFloat(deltaTime)
+        
+        if(position.x < 0)
+        {
+            position.x = CGFloat(0)
+        }
+        
+        if(position.x > (scene?.size.width)! - 400)
+        {
+            position.x = CGFloat((scene?.size.width)! - 400)
+        }
+        
+
         
         /*
         // Keep player within level bounds
@@ -87,7 +106,6 @@ class Player : Entity {
             animTimer += deltaTime
             if (animTimer > animationAction.duration) {
                 isAnimating = false
-                isAttacking = false
                 animTimer = 0
             }
         }
@@ -116,22 +134,23 @@ class Player : Entity {
     //Attack animation/action
     func attack() {
         if (!isAnimating) {
-            isAttacking = true
-            isAnimating = true
-            textureAnimation = [SKTexture(imageNamed: "rogue_attack_01"),
-                                SKTexture(imageNamed: "rogue_attack_02"),
-                                SKTexture(imageNamed: "rogue_attack_03"),
-                                SKTexture(imageNamed: "rogue_attack_04"),
-                                SKTexture(imageNamed: "rogue_attack_05"),
-                                SKTexture(imageNamed: "rogue_attack_06"),
-                                SKTexture(imageNamed: "rogue_attack_07"),
-                                SKTexture(imageNamed: "rogue_attack_08"),
-                                SKTexture(imageNamed: "rogue_attack_09"),
-                                SKTexture(imageNamed: "rogue_attack_10"),
-                                SKTexture(imageNamed: "rogue_attack_11")]
-            
-            animationAction = SKAction.animate(with: textureAnimation, timePerFrame: 0.08)
-            self.run(animationAction)
+            if (state == PlayerState.IDLE) {
+                isAnimating = true
+                textureAnimation = [SKTexture(imageNamed: "rogue_attack_01"),
+                                    SKTexture(imageNamed: "rogue_attack_02"),
+                                    SKTexture(imageNamed: "rogue_attack_03"),
+                                    SKTexture(imageNamed: "rogue_attack_04"),
+                                    SKTexture(imageNamed: "rogue_attack_05"),
+                                    SKTexture(imageNamed: "rogue_attack_06"),
+                                    SKTexture(imageNamed: "rogue_attack_07"),
+                                    SKTexture(imageNamed: "rogue_attack_08"),
+                                    SKTexture(imageNamed: "rogue_attack_09"),
+                                    SKTexture(imageNamed: "rogue_attack_10"),
+                                    SKTexture(imageNamed: "rogue_attack_11")]
+                
+                animationAction = SKAction.animate(with: textureAnimation, timePerFrame: 0.08)
+                self.run(animationAction)
+            }
         }
         
     }
@@ -193,6 +212,13 @@ class Player : Entity {
     
     func setDirection(dir:CGPoint) {
         direction = dir
+    }
+    
+    func jump() {
+        if (state != PlayerState.JUMPING) {
+            physicsBody?.applyImpulse(CGVector(dx: 0, dy: 500))
+            state = PlayerState.JUMPING
+        }
     }
 }
 

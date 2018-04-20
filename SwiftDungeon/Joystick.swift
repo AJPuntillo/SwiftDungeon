@@ -64,7 +64,6 @@ class Joystick {
             }
             
             dirVector = CGPoint(x: xDist / 60, y: (yDist / 60))
-
         }
     }
     

@@ -17,7 +17,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        backgroundColor = #colorLiteral(red: 0.1631777585, green: 0.1484030187, blue: 0.2081771195, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.4305377305, green: 0.4890032411, blue: 0.7309067845, alpha: 1)
         gameManager = GameManager()
         gameManager?.scene = self
         gameManager?.startGame(size: size)
@@ -35,8 +35,7 @@ class GameScene: SKScene {
             gameManager?.joystick?.onBegin(loc: location)
             
             if (gameManager?.attackButton?.onClick(loc: location))! {
-                //gameManager?.player.attack()
-                gameManager?.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 1000))
+                gameManager?.player.attack()
             }
         }
     }
