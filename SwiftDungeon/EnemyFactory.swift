@@ -2,19 +2,23 @@
 //  EnemyFactory.swift
 //  SwiftDungeon
 //
-//  Created by Toro Juan D. on 3/20/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Created by Puntillo Andrew J. on 3/20/18.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import Foundation
+import SpriteKit
 
 class EnemyFactory {
     
     // This class is useless for now nut it's being left in incase
     // there ever needs to be enemy variation
     
-    func createEnemy() -> Enemy {
-        return Enemy()
+    func createEnemy(_ lifeTime:Double,_ bounce:CGFloat) -> Enemy {
+        let tmp = Enemy()
+        tmp.maxLifeTime = lifeTime
+        tmp.physicsBody?.restitution = (bounce / 100.0)
+        return tmp
     }
     
 }

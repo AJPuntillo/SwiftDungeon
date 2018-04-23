@@ -2,8 +2,8 @@
 //  GameManager.swift
 //  SwiftDungeon
 //
-//  Created by Toro Juan D. on 3/12/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Created by Puntillo Andrew J. on 3/12/18.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import Foundation
@@ -41,18 +41,10 @@ class GameManager {
         map.physicsBody = SKPhysicsBody(texture: map.texture!, size: map.size)
         map.physicsBody?.isDynamic = false;
         
-        
         // Make Player
         player.zPosition = 1
         player.position = map.playerSpawn
         player.setScale(5)
-        
-        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
-        //player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: player.size.width, height: player.size.height))
-        player.physicsBody?.usesPreciseCollisionDetection = true;
-        player.physicsBody?.isDynamic = true;
-        player.physicsBody?.affectedByGravity = true;
-        player.physicsBody?.allowsRotation = false;
         
         //Init the Joystick
         joystick = Joystick()
@@ -66,7 +58,7 @@ class GameManager {
         populateLevel()
         
         // Populate level with enemies
-        //populateEnemies()
+        populateEnemies()
     }
 
     func update(_ currentTime: TimeInterval) {
@@ -90,9 +82,7 @@ class GameManager {
         
         //Limiting BG movement
         if (player.position.x >= (scene?.size.width)! - 400 && (joystick?.dirVector.x)! < CGFloat(0.0)) {
-            if (map.position.x >= -1580) {
-                map.position.x -= 10
-            }
+            map.moveForward()
         }
         
         //Falling into the water
@@ -100,7 +90,7 @@ class GameManager {
             player.isDead = true;
         }
         
-        /*
+        
         // Update Enemies and check for collisions
         var enemiesToBeDeleted: [Int] = []
         
@@ -108,27 +98,28 @@ class GameManager {
             if(!loading) {
                 enemy.update(currentTime)
             }
-            enemy.targetPosition = player.position
             
             let playerCollision = enemy.collision(items: [player]).first
             
             if let _ = playerCollision  {
-                if player.isAttacking {
-                    enemy.removeFromParent()
-                    enemiesToBeDeleted.append(enemies.index(of: enemy)!)
-                }
-                else {
-                    player.takeDamage()
-                    print(player.health)
-                }
+                //player.takeDamage()
+                //print(player.health)
+                //enemy.removeFromParent()
+                //enemiesToBeDeleted.append(enemies.index(of: enemy)!)
+                //enemy.death()
+            }
+            
+            if (enemy.isDead) {
+                enemy.removeFromParent()
+                enemiesToBeDeleted.append(enemies.index(of: enemy)!)
             }
         }
         
         deleteEnemies(enemiesToBeDeleted)
-        */
+ 
         
         // Check to reload level
-        if (player.isDead || enemies.count == 0) {
+        if (player.isDead) {
             player.resetPlayer()
             reloadLevel()
         }
@@ -171,8 +162,12 @@ class GameManager {
     
     private func populateEnemies() {
         for _ in 0..<maxEnemies {
+            
             let randomIndex = Int(arc4random_uniform(UInt32(map.enemySpawns.count)))
-            let eTemp = enemyFactory.createEnemy()
+            let randomLifetime = Double(arc4random_uniform(3) + 1)
+            let randomBounce = CGFloat(arc4random_uniform(100) + 1)
+            
+            let eTemp = enemyFactory.createEnemy(randomLifetime, randomBounce)
             eTemp.position = map.enemySpawns[randomIndex]
             eTemp.setScale(5)
             scene?.addChild(eTemp)

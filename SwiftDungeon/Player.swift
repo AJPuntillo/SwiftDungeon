@@ -3,7 +3,7 @@
 //  SwiftDungeon
 //
 //  Created by Puntillo Andrew J. on 3/12/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import Foundation
@@ -38,8 +38,17 @@ class Player : Entity {
     
     init() {
         super.init(imageName: "rogue_idle_01")
+        
+        //Initial state
         idle()
         state = PlayerState.IDLE
+        
+        //Physics body
+        physicsBody = SKPhysicsBody(texture: texture!, size: size)
+        physicsBody?.usesPreciseCollisionDetection = true;
+        physicsBody?.isDynamic = true;
+        physicsBody?.affectedByGravity = true;
+        physicsBody?.allowsRotation = false;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +62,7 @@ class Player : Entity {
             return
         }
         
+        //If moving, animate it
         if (direction.x != 0 || direction.y != 0) {
             moveTo()
         }
@@ -65,9 +75,10 @@ class Player : Entity {
             xScale = 5
         }
         
+        //Movement speed
         position.x -= velocity * direction.x * CGFloat(deltaTime)
-        //position.y += velocity * direction.y * CGFloat(deltaTime)
         
+        //Limiting player's boundaries
         if(position.x < 0)
         {
             position.x = CGFloat(0)
@@ -77,28 +88,6 @@ class Player : Entity {
         {
             position.x = CGFloat((scene?.size.width)! - 400)
         }
-        
-
-        
-        /*
-        // Keep player within level bounds
-        if(position.y < 600)
-        {
-            position.y = CGFloat(600)
-        }
-        if(position.x < 0)
-        {
-            position.x = CGFloat(0)
-        }
-        if(position.y > (scene?.size.height)! - 200)
-        {
-            position.y = CGFloat((scene?.size.height)! - 200)
-        }
-        if(position.x > (scene?.size.width)!)
-        {
-            position.x = CGFloat((scene?.size.width)!)
-        }
-        */
         
         //If it is animating, increment the animTimer until it has reached the total duration of the SKAction's animation time
         //Once the time has exceeded the duration, is is no longer animating
@@ -216,7 +205,7 @@ class Player : Entity {
     
     func jump() {
         if (state != PlayerState.JUMPING) {
-            physicsBody?.applyImpulse(CGVector(dx: 0, dy: 500))
+            physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
             state = PlayerState.JUMPING
         }
     }

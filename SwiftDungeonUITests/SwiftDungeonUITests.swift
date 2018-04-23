@@ -2,8 +2,8 @@
 //  SwiftDungeonUITests.swift
 //  SwiftDungeonUITests
 //
-//  Created by Toro Juan D. on 2/28/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Created by Puntillo Andrew J. on 2/28/18.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import XCTest

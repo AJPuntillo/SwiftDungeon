@@ -2,8 +2,8 @@
 //  Map.swift
 //  SwiftDungeon
 //
-//  Created by Toro Juan D. on 3/12/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Created by Puntillo Andrew J. on 3/12/18.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ class Map : SKSpriteNode {
     
     var playerSpawn = CGPoint(x: 200, y: 500)
     
-    var enemySpawns:[CGPoint] = [CGPoint(x: 900, y: 800), CGPoint(x: 1000, y: 700), CGPoint(x: 1100, y: 900), CGPoint(x: 1200, y: 900), CGPoint(x: 1300, y: 900)]
+    var enemySpawns:[CGPoint] = [CGPoint(x: 300, y: 1500), CGPoint(x: 500, y: 1500), CGPoint(x: 700, y: 1500), CGPoint(x: 900, y: 1500), CGPoint(x: 1100, y: 1500), CGPoint(x: 1300, y: 1500), CGPoint(x: 1500, y: 1500), CGPoint(x: 1700, y: 1500), CGPoint(x: 1900, y: 1500)]
     
     init(imageNamed: String) {
         let texture = SKTexture(imageNamed: imageNamed)
@@ -26,6 +26,12 @@ class Map : SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func moveForward() {
+        if (position.x >= -1580) {
+            position.x -= 7;
+        }
     }
     
 }

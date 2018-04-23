@@ -2,23 +2,43 @@
 //  Enemy.swift
 //  SwiftDungeon
 //
-//  Created by Toro Juan D. on 3/19/18.
-//  Copyright © 2018 Toro Juan D. All rights reserved.
+//  Created by Puntillo Andrew J. on 3/19/18.
+//  Copyright © 2018 Puntillo Andrew J. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
 class Enemy : Entity {
-    
+    //Animation
+    private var textureAnimation: [SKTexture] = []
+    //Check if already animating
+    var isAnimating:Bool = false
+    //SKAction for animation
+    var animationAction:SKAction = SKAction()
+    //Timer for animation
+    var animTimer:Double = 0
     //Speed of Enemy
     private var velocity: CGFloat = 50
+    //Life Timer
+    var lifeTimer:Double = 0
+    var maxLifeTime:Double = 0
+    //Alive bool
+    var isDead:Bool = false
     
     // Position of target to chase
     var targetPosition: CGPoint = CGPoint(x: 0, y: 0)
     
     init() {
         super.init(imageName: "slime_idle_01")
+        
+        //Physics body
+        physicsBody = SKPhysicsBody(texture: texture!, size: size)
+        physicsBody?.usesPreciseCollisionDetection = true;
+        physicsBody?.isDynamic = true;
+        physicsBody?.affectedByGravity = true;
+        physicsBody?.allowsRotation = false;
+        physicsBody?.restitution = 1.0;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,8 +73,44 @@ class Enemy : Entity {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         
-        moveToTarget()
+        //moveToTarget()
+        
+        //If it is animating, increment the animTimer until it has reached the total duration of the SKAction's animation time
+        //Once the time has exceeded the duration, is is no longer animating
+        if (isAnimating) {
+            animTimer += deltaTime
+            if (animTimer > animationAction.duration) {
+                isAnimating = false
+                animTimer = 0
+                isDead = true;
+            }
+        }
+        
+        if (lifeTimer < maxLifeTime) {
+            lifeTimer += deltaTime
+        }
+        else {
+            death()
+            //isDead = true
+        }
     }
     
+    //Death animation
+    func death() {
+        if (!isAnimating && !isDead) {
+            isAnimating = true
+            textureAnimation = [SKTexture(imageNamed: "explosion_1"),
+                                SKTexture(imageNamed: "explosion_2"),
+                                SKTexture(imageNamed: "explosion_3"),
+                                SKTexture(imageNamed: "explosion_4"),
+                                SKTexture(imageNamed: "explosion_5"),
+                                SKTexture(imageNamed: "explosion_6"),
+                                SKTexture(imageNamed: "explosion_7")]
+            
+            animationAction = SKAction.animate(with: textureAnimation, timePerFrame: 0.08)
+            
+            self.run(animationAction)
+        }
+    }
 }
 
