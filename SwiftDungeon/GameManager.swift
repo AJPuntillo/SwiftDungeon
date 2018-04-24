@@ -123,6 +123,9 @@ class GameManager {
             player.resetPlayer()
             reloadLevel()
         }
+        
+        populateEnemies()
+        
     }
     
     private func reloadLevel() {
