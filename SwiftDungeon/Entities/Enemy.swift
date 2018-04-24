@@ -9,7 +9,8 @@
 import Foundation
 import SpriteKit
 
-class Enemy : Entity {
+class Enemy : Entity, EnemyExplosion {
+    
     //Animation
     private var textureAnimation: [SKTexture] = []
     //Check if already animating
@@ -39,6 +40,7 @@ class Enemy : Entity {
         physicsBody?.affectedByGravity = true;
         physicsBody?.allowsRotation = false;
         physicsBody?.restitution = 1.0;
+        physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,13 +92,13 @@ class Enemy : Entity {
             lifeTimer += deltaTime
         }
         else {
-            death()
+            explosion()
             //isDead = true
         }
     }
-    
-    //Death animation
-    func death() {
+
+    //Protocol
+    func explosion() {
         if (!isAnimating && !isDead) {
             isAnimating = true
             textureAnimation = [SKTexture(imageNamed: "explosion_1"),
@@ -111,6 +113,10 @@ class Enemy : Entity {
             
             self.run(animationAction)
         }
+    }
+    
+    func shiftEnemy(_ amount:CGFloat) {
+        position.x -= amount
     }
 }
 

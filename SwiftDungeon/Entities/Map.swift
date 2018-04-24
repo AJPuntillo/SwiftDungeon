@@ -16,6 +16,7 @@ class Map : SKSpriteNode {
     // but for now we will just use this class
     
     var playerSpawn = CGPoint(x: 200, y: 500)
+    var endOfLevel:Bool = false
     
     var enemySpawns:[CGPoint] = [CGPoint(x: 300, y: 1500), CGPoint(x: 500, y: 1500), CGPoint(x: 700, y: 1500), CGPoint(x: 900, y: 1500), CGPoint(x: 1100, y: 1500), CGPoint(x: 1300, y: 1500), CGPoint(x: 1500, y: 1500), CGPoint(x: 1700, y: 1500), CGPoint(x: 1900, y: 1500)]
     
@@ -28,9 +29,12 @@ class Map : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func moveForward() {
+    func moveForward(_ amount:CGFloat) {
         if (position.x >= -1580) {
-            position.x -= 7;
+            position.x -= amount;
+        }
+        else {
+            endOfLevel = true
         }
     }
     

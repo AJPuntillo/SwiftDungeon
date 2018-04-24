@@ -34,8 +34,8 @@ class GameScene: SKScene {
             
             gameManager?.joystick?.onBegin(loc: location)
             
-            if (gameManager?.attackButton?.onClick(loc: location))! {
-                gameManager?.player.attack()
+            if (gameManager?.map.endOfLevel)! {
+                gameManager?.resetLevel()
             }
         }
     }

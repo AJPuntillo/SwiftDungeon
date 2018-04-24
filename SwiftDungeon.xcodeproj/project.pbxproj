@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432C9CB2208FC9D600C8CA6A /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C9CB1208FC9D600C8CA6A /* MenuScene.swift */; };
+		432C9CB4208FEBD800C8CA6A /* EnemyExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C9CB3208FEBD800C8CA6A /* EnemyExplosion.swift */; };
 		432CF1A4205861AD0022D1DF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A3205861AD0022D1DF /* Entity.swift */; };
 		432CF1A6205861BE0022D1DF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A5205861BE0022D1DF /* Player.swift */; };
 		432CF1A8205875CD0022D1DF /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CF1A7205875CD0022D1DF /* Joystick.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		432C9CB1208FC9D600C8CA6A /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		432C9CB3208FEBD800C8CA6A /* EnemyExplosion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyExplosion.swift; sourceTree = "<group>"; };
 		432CF1A3205861AD0022D1DF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		432CF1A5205861BE0022D1DF /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		432CF1A7205875CD0022D1DF /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
@@ -130,6 +134,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		432C9CAC208FC5EC00C8CA6A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7F9172FE20475AE80076533D /* GameScene.swift */,
+				432C9CB1208FC9D600C8CA6A /* MenuScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		432C9CAD208FC5FF00C8CA6A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7FADDD6920619D170065E94A /* EnemyFactory.swift */,
+				432CF1A3205861AD0022D1DF /* Entity.swift */,
+				7F3426532056EE130057A2EF /* Map.swift */,
+				432CF1A5205861BE0022D1DF /* Player.swift */,
+				7F5E88A620604FCA00338F72 /* Enemy.swift */,
+				432C9CB3208FEBD800C8CA6A /* EnemyExplosion.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		432C9CAE208FC63200C8CA6A /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				7F91730020475AE80076533D /* GameViewController.swift */,
+				432CF1A7205875CD0022D1DF /* Joystick.swift */,
+				439FEAA92060378200F35A8B /* AttackButton.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		432C9CAF208FC69E00C8CA6A /* GameManager */ = {
+			isa = PBXGroup;
+			children = (
+				7F3426512056EDF80057A2EF /* GameManager.swift */,
+			);
+			path = GameManager;
+			sourceTree = "<group>";
+		};
 		7F38E827207EA43B00ADEFED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,22 +217,16 @@
 		7F9172F720475AE80076533D /* SwiftDungeon */ = {
 			isa = PBXGroup;
 			children = (
+				432C9CAF208FC69E00C8CA6A /* GameManager */,
+				432C9CAE208FC63200C8CA6A /* Controls */,
+				432C9CAD208FC5FF00C8CA6A /* Entities */,
+				432C9CAC208FC5EC00C8CA6A /* Scenes */,
 				7F9172F820475AE80076533D /* AppDelegate.swift */,
-				7F9172FE20475AE80076533D /* GameScene.swift */,
-				7F91730020475AE80076533D /* GameViewController.swift */,
 				7F91730220475AE80076533D /* Main.storyboard */,
 				7F91730520475AE80076533D /* Assets.xcassets */,
 				7F91730720475AE80076533D /* LaunchScreen.storyboard */,
 				7F91730A20475AE80076533D /* Info.plist */,
-				7F3426512056EDF80057A2EF /* GameManager.swift */,
 				4344624C2087E16E0068197C /* GoogleService-Info.plist */,
-				432CF1A3205861AD0022D1DF /* Entity.swift */,
-				7F3426532056EE130057A2EF /* Map.swift */,
-				432CF1A5205861BE0022D1DF /* Player.swift */,
-				432CF1A7205875CD0022D1DF /* Joystick.swift */,
-				439FEAA92060378200F35A8B /* AttackButton.swift */,
-				7F5E88A620604FCA00338F72 /* Enemy.swift */,
-				7FADDD6920619D170065E94A /* EnemyFactory.swift */,
 			);
 			path = SwiftDungeon;
 			sourceTree = "<group>";
@@ -353,8 +391,10 @@
 				7F3426522056EDF80057A2EF /* GameManager.swift in Sources */,
 				432CF1A4205861AD0022D1DF /* Entity.swift in Sources */,
 				432CF1A6205861BE0022D1DF /* Player.swift in Sources */,
+				432C9CB4208FEBD800C8CA6A /* EnemyExplosion.swift in Sources */,
 				7F5E88A720604FCA00338F72 /* Enemy.swift in Sources */,
 				439FEAAA2060378200F35A8B /* AttackButton.swift in Sources */,
+				432C9CB2208FC9D600C8CA6A /* MenuScene.swift in Sources */,
 				7F91730120475AE80076533D /* GameViewController.swift in Sources */,
 				7F9172F920475AE80076533D /* AppDelegate.swift in Sources */,
 			);
