@@ -1,32 +1,28 @@
 # SwiftDungeon
 GAME 352
 Mobile Programming II
-Feb 28, 2017
+April 25, 2018
 
-Project Proposal
+###SWIFT DUNGEON GDD
 
-GROUP MEMBERS:
-Andrew Puntillo
-Juan Toro
+**Andrew Puntillo***
 
-Dungeoneer is a dungeon crawler adventure. The game is 2D RPG with a top-down camera in a pixel themed fantasy world. The player must adventure through a map and fight their way to the boss at the end of the dungeon. The player will encounter difficult enemies, find special items, and unlock new rooms as they progress.
+#High Concept:
+Swift Dungeon is a side-scrolling platformer. The player must make it to the end of the level without being killed off by falling slimes from the sky. The slimes fall at random intervals and explode at random times, making the game very tense getting from one side to another. When the player makes it to the end, the time is displayed as their final score.
 
-Genre:
-•	Dungeon Crawler
-•	RPG
-Theme:
-•	Pixel Art
-•	Fantasy
-•	2D
-•	Top-down camera
-Items:
-•	Items are found in chests or dropped from enemies
-•	The player has 3 inventory spots that hold a different item type and can only hold one item in each slot.
-•	Weapon slot: For offense
-•	Armor slot: For defense
-•	Consumable slot: For utility/healing
-Enemies:
-•	Enemies will chase the player and hurt them
-•	The enemies will drop items on death
+#Genre:
+- Sidescroller
+- Platformer
+
+#Theme:
+- Pixel Art
+- Fantasy
+- 2D
+
+#Mechanics:
+- The player is controlled using a touch-joystick. The player can move left, right, and jump.
+- Enemy slimes fall at different intervals with different velocities.
+- The player can push the slimes around before they explode.
+- Enemy slimes deal damage to the player on contact while exploding.
 
 
