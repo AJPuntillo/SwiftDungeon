@@ -26,6 +26,10 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         gameManager?.update(currentTime)
+        
+        if (gameManager?.map.endOfLevel)! {
+            spawnParticleEffect(_position: (gameManager?.player.position)!)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,4 +56,13 @@ class GameScene: SKScene {
         gameManager?.joystick?.onEnded()
     }
     
+    func spawnParticleEffect(_position: CGPoint){
+        let particle = SKEmitterNode(fileNamed: "Explosion.sks")
+        particle?.name = "BOOM"
+        particle?.position = _position
+        particle?.targetNode = self
+        gameManager?.scene?.addChild(particle!)
+    }
+    
 }
+
